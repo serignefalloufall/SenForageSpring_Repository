@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <title>Liste Village</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>User</th>
+        </tr>
+        </thead>
 
+        <tbody>
+        <tr th:each = "v:${liste_village}">
+            <td th:text="${v.id}"></td>
+            <td th:text="${v.nom}"></td>
+            <td th:text="${v.user.nom}"></td>
+
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>
