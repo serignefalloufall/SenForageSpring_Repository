@@ -20,7 +20,7 @@ public class VillageController {
     @Autowired
     private IVillage villagedao;
 
-    @RequestMapping(value = "Village/liste")
+    @RequestMapping(value = "/liste")
     public String listeVillage(ModelMap model)
     {
         //on utilise le ModelMap lorsqu'on veux charger des donnees de plusieur source
@@ -50,11 +50,11 @@ public class VillageController {
         try {
 
             villagedao.save(village);
-            modelAndView.addObject("resultat", new String("Village ajoute avec succe"));
+            villagedao.flush();
+
         }catch (Exception e){
 
-            modelAndView.addObject("resultat", new String("Village non ajoute"));
         }
-        return "village/add";
+        return "redirect:/liste";
     }
 }
