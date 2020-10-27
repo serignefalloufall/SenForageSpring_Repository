@@ -27,9 +27,9 @@ public class VillageController {
         List<User> users = userdao.findAll();
         List<Village> villages = villagedao.findAll();
 
-
         model.put("liste_users",users);
         model.put("liste_village",villages);
+        model.put("village", new Village());
 
         return "village/add";
     }
@@ -53,7 +53,37 @@ public class VillageController {
             villagedao.flush();
 
         }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "redirect:/liste";
+    }
 
+
+    @RequestMapping(value = "Village/edit", method = RequestMethod.GET)
+    public String editVillage(int id, ModelMap model)
+    {
+        List<User> users = userdao.findAll();
+        List<Village> villages = villagedao.findAll();
+        Village village = villagedao.getOne(id);
+
+        model.put("liste_users",users);
+        model.put("liste_village",villages);
+        model.put("village",village);
+
+
+        return "village/add";
+    }
+
+
+    @RequestMapping(value = "Village/delete", method = RequestMethod.GET)
+    public String deleteVillage(int id)
+    {
+        try {
+            villagedao.delete(villagedao.getOne(id));
+            villagedao.flush();
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return "redirect:/liste";
     }

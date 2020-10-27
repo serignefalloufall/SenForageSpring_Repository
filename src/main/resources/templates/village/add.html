@@ -349,8 +349,8 @@
                                 </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="forms_basic.html">Ajouter un village</a></li>
-                        <li><a href="table.html">Liste des village</a></li>
+                        <li><a th:href="@{/liste}">Ajouter un village</a></li>
+                        <li><a th:href="@{/liste}">Liste des village</a></li>
 
                     </ul>
                 </li>
@@ -362,8 +362,8 @@
                                 </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="add-patient.html">Ajouter un client</a></li>
-                        <li><a href="pt-list.html">Liste des clients</a></li>
+                        <li><a th:href="@{/listeclient}">Ajouter un client</a></li>
+                        <li><a th:href="@{/listeclient}">Liste des clients</a></li>
                     </ul>
                 </li>
 
@@ -438,10 +438,10 @@
 
                         </div>
                         <div class="panel-body">
-                            <form class="col-sm-12" th:action="@{/Village/add}" th:method="POST">
+                            <form class="col-sm-12" th:action="@{/Village/add}" th:method="POST" th:object="${village}">
                                 <div class="form-group">
                                     <label>Nom Village</label>
-                                    <input type="text" class="form-control" name="nom" placeholder="Saisir nom village" required>
+                                    <input type="text" class="form-control" name="nom" placeholder="Saisir nom village" required th:field="*{nom}">
                                 </div>
 
                                 <div class="form-group">
@@ -477,6 +477,7 @@
                                         <th>Id</th>
                                         <th>Nom</th>
                                         <th>User</th>
+                                        <th>Update</th>
 
                                     </tr>
                                     </thead>
@@ -486,6 +487,12 @@
                                         <td th:text="${v.id}"></td>
                                         <td th:text="${v.nom}"></td>
                                         <td th:text="${v.user.nom}"></td>
+                                        <td>
+                                            <a th:href="@{/Village/edit(id=${v.id})}" class="btn btn-info btn-xs" ><i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a th:href="@{/Village/delete(id=${v.id})}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+                                            </a>
+                                        </td>
                                     </tr>
 
                                     </tbody>
