@@ -7,6 +7,7 @@ import com.simplon.senForageSpringProject.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +75,11 @@ public class SenForageSpringProjectApplication {
 		}catch (Exception e){
 			e.printStackTrace();
 		}*/
+
+		/*String password = "passer";
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hasPassword = passwordEncoder.encode(password);
+		System.out.println("Result Password = " + hasPassword);*/
 
 	}
 

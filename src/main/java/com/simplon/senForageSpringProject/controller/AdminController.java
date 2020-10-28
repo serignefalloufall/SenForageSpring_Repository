@@ -27,9 +27,9 @@ public class AdminController {
     @RequestMapping(value = "/logon")
     public String logon(ModelMap map, HttpServletRequest req, HttpServletResponse res) {
         String user = req.getRemoteUser();//requperation email user conecte
-        //System.out.println("Principale is :" + user);
-       // String name = SecurityContextHolder.getContext().getAuthentication().getName();
-       // System.out.println("Principale is :" + name);
+        System.out.println("Principale is :" + user);
+       //String name = SecurityContextHolder.getContext().getAuthentication().getName();
+       //System.out.println("Principale is :" + name);
         if (user != null)
             return "accueil";
         else

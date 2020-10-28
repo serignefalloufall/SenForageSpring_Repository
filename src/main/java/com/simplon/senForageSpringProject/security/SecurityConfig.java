@@ -27,15 +27,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery("SELECT email as principal, password as credentials,etat FROM user WHERE email = ?")
                 .authoritiesByUsernameQuery("SELECT u.email as principal,r.nom as roles FROM user u, roles r, user_roles ur WHERE u.id = ur.users_id AND r.id = ur.roles_id AND u.email=?")
-                //.passwordEncoder(new Md5PasswordEncoder())
+                .passwordEncoder(new BCryptPasswordEncoder())
                 .rolePrefix("ROLE_");
-    }//La methode configure permet de requperer les infos de user conecte
+    }//La methode configure permet de recuperer les infos de user conecte
 
 
     // configure les autorisations
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         try {
             http.formLogin().loginPage("/login");// http.formLogin() permet d'afficher la form de connexion par defaut
             //Definition des url en fonction des roles
