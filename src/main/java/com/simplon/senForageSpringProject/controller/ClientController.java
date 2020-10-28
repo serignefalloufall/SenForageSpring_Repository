@@ -24,7 +24,7 @@ public class ClientController {
     @Autowired
     private IClient clientdao;
 
-    @RequestMapping(value = "/listeclient")
+    @RequestMapping(value = "/Client/liste")
     public String listeClient(ModelMap model)
     {
         //on utilise le ModelMap lorsqu'on veux charger des donnees de plusieur source
@@ -74,7 +74,7 @@ public class ClientController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "redirect:/listeclient";
+        return "redirect:/Client/liste";
     }
 
 
@@ -108,6 +108,6 @@ public class ClientController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "redirect:/listeclient";
+        return "redirect:/Client/liste";
     }
 }
